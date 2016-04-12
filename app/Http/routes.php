@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('master');
 });
+
+Route::post('auth', 'userController@checkAuth');
+Route::resource('/user', 'userController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

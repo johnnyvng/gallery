@@ -15,15 +15,26 @@ elixir(function(mix) {
     mix.sass('app.scss');
 
     mix.scripts([
-    	'app.js'
-    ], 'public/js/app.js'); 
+        'app.js'
+    ], 'public/js/app.js');
 
     mix.scripts([
-    	'controllers/userController.js'
+        'controllers/userController.js',
+        'controllers/globalController.js',
+        'controllers/navController.js',
+        'controllers/galleryController.js',
+        'controllers/invitationController.js'
     ], 'public/js/controllers.js');
 
+    mix.scripts([
+        'models/userModel.js',
+        'models/galleryModel.js',
+        'models/invitationModel.js'
+    ], 'public/js/models.js');
+
     mix.version([
-    	'js/app.js',
-    	'js/controllers.js'
+        'js/app.js',
+        'js/models.js',
+        'js/controllers.js'
     ]);
 });

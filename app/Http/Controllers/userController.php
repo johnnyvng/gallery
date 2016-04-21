@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-use App\Http\Requests;
-
-class userController extends Controller
+class UserController extends Controller
 {
     public function checkAuth(Request $request)
     {
         // setting the credentials array
         $credentials = [
-            'email' => $request->input('email'), 
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
 
@@ -20,10 +20,10 @@ class userController extends Controller
         if (!Auth::attempt($credentials)) {
             return response('Username password does not match', 403);
         }
-        
-        return response(Auth::user(), 201);
 
+        return response(Auth::user(), 201);
     }
+
     /**
      * Display a listing of the resource.
      *

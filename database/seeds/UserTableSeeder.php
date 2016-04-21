@@ -13,10 +13,9 @@ class UserTableSeeder extends Seeder
     {
         //
         App\User::create([
-        	'name' => 'Johnny Ng',
-        	'email' => 'johnnyng@example.com',
-        	// password is 'pass'
-        	'password' => \Hash::make('123456'),
+            'name' => 'Amitav Roy',
+            'email' => 'reachme@amitavroy.com',
+            'password' => \Hash::make('pass'),
         ]);
     }
 }

@@ -1,25 +1,21 @@
-myApp.controller('userController', ['$scope', '$http', function($scope) {
-	angular.extend($scope, {
-		doLogin: function(loginForm) {
-			// define the $http with headers object
-			$http({
-				headers: 
-				{
-					'Content-Type': 'application/json'
-				},
-				url: baseURL + 'auth',
-				method: "POST",
-				data: 
-				{
-					email: $scope.login.username,
-					password: $scope.login.password
-				}
-			})
-			// define object .success
-			.success(function(reponse)
-			{
-				console.log(reponse);
-			});
-		}
-	});
+myApp.controller('userController', ['$scope', '$location', 'userModel', function($scope, $location, userModel) {
+    angular.extend($scope, {
+        login: {
+            username: 'reachme@amitavroy.com',
+            password: 'pass'
+        }
+    });
+
+    angular.extend($scope, {
+        doLogin: function(loginForm) {
+            var data = {
+                email: $scope.login.username,
+                password: $scope.login.password
+            };
+
+            userModel.doLogin(data).then(function() {
+                $location.path('/dashboard');
+            });
+        }
+    });
 }]);
